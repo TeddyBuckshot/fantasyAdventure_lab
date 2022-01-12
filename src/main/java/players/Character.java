@@ -1,5 +1,9 @@
 package players;
 
+import rooms.Room;
+import rooms.challenege.IChallenge;
+import rooms.challenege.Treasure;
+
 public abstract class Character implements IPlayer{
 
     private String name;
@@ -7,13 +11,23 @@ public abstract class Character implements IPlayer{
     private Armour armour;
     private int health;
     private int defence;
+    private int points;
 
-    public Character(String name, Weapon weapon, Armour armour, int health, int defence){
+    public Character(String name, Weapon weapon, Armour armour, int health, int defence, int points){
         this.name = name;
         this.weapon = weapon;
         this.armour = armour;
         this.health = health;
         this.defence = defence;
+        this.points = points;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
     }
 
     public String getName() {
@@ -63,5 +77,15 @@ public abstract class Character implements IPlayer{
     public int getWeaponDamageValueFromEnum() {
         return this.weapon.getDamage();
     }
+
+    public void addPoints(int points){
+        this.points +=points;
+    }
+
+    public void collectTreasure(int points){
+        addPoints(points);
+    }
+
+
 
 }

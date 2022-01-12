@@ -6,20 +6,22 @@ import players.Weapon;
 
 public class Archer extends Character {
 
-    public Archer(String name, Weapon weapon, Armour armour, int health, int defence) {
-        super(name, weapon, armour, health, defence);
+    public Archer(String name, Weapon weapon, Armour armour, int health, int defence, int points) {
+        super(name, weapon, armour, health, defence, points);
     }
 
-
     public void attack(Character troll) {
-        getWeaponDamageValueFromEnum();
+        troll.defend(getWeaponDamageValueFromEnum());
     }
 
     public void defend(int damage) {
-        int damageDone = damage - getDefence();
+        if (damage > getDefence()) {
+            int damageDone = damage - getDefence();
+            setHealth(getHealth() - damageDone);
+        }
     }
 
-    public int specialAttack(){
-        return getWeaponDamageValueFromEnum()*2;
+    public void specialAttack(Character troll){
+         troll.defend(getWeaponDamageValueFromEnum()*2);
     }
 }

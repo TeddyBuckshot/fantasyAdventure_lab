@@ -1,4 +1,13 @@
 package rooms;
 
-public class Dungeon {
+import rooms.challenege.IChallenge;
+import rooms.challenege.Treasure;
+
+public class Dungeon extends Room {
+
+
+    public Dungeon(String name, IChallenge challenge) {
+        super(name, challenge);
+    }
+
 }

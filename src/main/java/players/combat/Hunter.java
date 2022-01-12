@@ -6,12 +6,12 @@ import players.Weapon;
 
 public class Hunter extends Character {
 
-    public Hunter(String name, Weapon weapon, Armour armour, int health, int defence) {
-        super(name, weapon, armour, health, defence);
+    public Hunter(String name, Weapon weapon, Armour armour, int health, int defence, int points) {
+        super(name, weapon, armour, health, defence, points);
     }
 
     public void attack(Character troll) {
-        getWeaponDamageValueFromEnum();
+        troll.defend(getWeaponDamageValueFromEnum());
     }
 
     public void defend(int damage) {

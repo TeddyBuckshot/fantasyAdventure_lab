@@ -5,6 +5,7 @@ import players.Weapon;
 import players.combat.Hunter;
 import players.combat.Knight;
 import players.combat.Shield;
+import rooms.challenege.Treasure;
 
 import static org.junit.Assert.assertEquals;
 
@@ -14,13 +15,16 @@ public class KnightTest {
     Hunter hunter;
     Shield shield1;
     Shield shield2;
+    Treasure treasure;
 
     @Before
     public void before() {
-        knight = new Knight("Lancelot", Weapon.SWORD, Armour.PLATE, 100, 5);
-        hunter = new Hunter("hunter", Weapon.CROSSBOW, Armour.CHAINMAIL, 100, 0);
+        knight = new Knight("Lancelot", Weapon.SWORD, Armour.PLATE, 100, 100, 0);
+        hunter = new Hunter("hunter", Weapon.CROSSBOW, Armour.CHAINMAIL, 100, 200, 0);
+        treasure = new Treasure("gold", 150);
         shield1 = Shield.GREATSHIELD;
         shield2 = Shield.ROUND;
+
     }
 
     @Test
@@ -57,7 +61,13 @@ public class KnightTest {
     @Test
     public void canAttackPlayer(){
         knight.attack(hunter);
-        assertEquals(190, hunter.getHealth());
+        assertEquals(100, hunter.getHealth());
+    }
+
+    @Test
+    public void canCollectTreasure() {
+        knight.collectTreasure(treasure.getPoints());
+        assertEquals(150, knight.getPoints());
     }
 
 

@@ -11,8 +11,8 @@ public class Knight extends Character {
     private Shield shield;
 
 
-    public Knight(String name, Weapon weapon, Armour armour, int health, int defence){
-        super(name, weapon, armour, health, defence);
+    public Knight(String name, Weapon weapon, Armour armour, int health, int defence, int points){
+        super(name, weapon, armour, health, defence, points);
         this.shield = null;
     }
 
